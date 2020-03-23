@@ -1,24 +1,12 @@
 pipeline {
     agent any
-    options {
-        skipStagesAfterUnstable()
-    }
     stages {
-        stage('Build') {
-            steps {
-                sh 'make'
-            }
+stage('testing pipeline'){
+          steps{
+      echo 'test1'
+                sh 'mkdir from-jenkins'
+                sh 'touch from-jenkins/test.txt'
+                }
         }
-        stage('Test'){
-            steps {
-                sh 'make check'
-                junit 'reports/**/*.xml'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'make publish'
-            }
-        }
-    }
+}
 }

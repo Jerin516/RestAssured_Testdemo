@@ -19,7 +19,7 @@ stage('testing pipeline'){
           steps{
       bat 'mvn test'
               
-              cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+           publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'C:\\Users\\jerjose\\Documents\\Reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
                 }
         }
         stage('Deploy'){

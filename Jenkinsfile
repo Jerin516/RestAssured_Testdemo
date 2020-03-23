@@ -11,5 +11,15 @@ stage('testing pipeline'){
       echo 'Building'
                 }
         }
+        stage('Test'){
+          steps{
+      echo 'Tesing'
+                }
+        }
+        stage('Deploy'){
+          steps{
+      echo 'Deploying'
+                }
+        }
 }
 }

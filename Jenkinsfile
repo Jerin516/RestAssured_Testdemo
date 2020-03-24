@@ -21,7 +21,7 @@ stage('testing pipeline'){
           publishHTML (target : [allowMissing: false,
  alwaysLinkToLastBuild: true,
  keepAll: true,
- reportDir: 'reports',
+ reportDir: 'C:\\Users\\jerjose\\Documents\\Reports',
  reportFiles: 'myreport.html',
  reportName: 'My Reports',
  reportTitles: 'The Report'])    

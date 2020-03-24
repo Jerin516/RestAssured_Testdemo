@@ -21,7 +21,11 @@ import java.io.File;
 				"html:output/html-report" }, monochrome = true)
 public class TestRunner extends ReUsableMethods {
 	
-	
+	@BeforeClass
+	public static void setProperty()
+	{
+		System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "default-src 'self'; script-src '*'; connect-src '*'; img-src '*'; style-src '*';");
+	}
 	
 	@AfterClass
 	public static void writeExtentReport() {

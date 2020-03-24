@@ -18,8 +18,14 @@ stage('testing pipeline'){
         stage('Test'){
           steps{
       bat 'mvn test'
-              
-           publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'C:\\Users\\jerjose\\Documents\\Reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+          publishHTML (target : [allowMissing: false,
+ alwaysLinkToLastBuild: true,
+ keepAll: true,
+ reportDir: 'reports',
+ reportFiles: 'myreport.html',
+ reportName: 'My Reports',
+ reportTitles: 'The Report'])    
+          // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'C:\\Users\\jerjose\\Documents\\Reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
                 }
         }
         stage('Deploy'){

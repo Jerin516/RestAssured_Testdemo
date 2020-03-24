@@ -16,7 +16,7 @@ import java.io.File;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(format = { "pretty" }, features = "src//test//java//Features", glue = {
-		"Steps" }, tags = { "@get" }, plugin = {
+		"Steps" }, plugin = {
 				"com.cucumber.listener.ExtentCucumberFormatter:src/test/reports/cucumber_report.html",
 				"html:output/html-report" }, monochrome = true)
 public class TestRunner extends ReUsableMethods {

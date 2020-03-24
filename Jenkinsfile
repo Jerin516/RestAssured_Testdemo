@@ -4,34 +4,30 @@ pipeline {
     tools{
         maven "MAVEN_HOME"
     }
-    stages {
-stage('testing pipeline'){
-          steps{
-      echo 'test1'
-                }
-}
-    stage('Build'){
-          steps{
-      echo 'Building'
-                }
+    
+    stages{
+        stage('Build'){
+            steps{
+                bat "mvn clean compile"
+            }
         }
-        stage('Test'){
-          steps{
-      bat 'mvn test'
-          publishHTML (target : [allowMissing: false,
- alwaysLinkToLastBuild: true,
- keepAll: true,
- reportDir: 'C:\\Users\\jerjose\\Documents\\Reports',
- reportFiles: 'myreport.html',
- reportName: 'My Reports',
- reportTitles: 'The Report'])    
-          // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'C:\\Users\\jerjose\\Documents\\Reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-                }
+        stage('RunGetTag'){
+            steps{
+                bat "mvn test -Dcucumber.options=\"--tags @get\""
+            }
+        }
+        stage('RunPostPutTag'){
+            steps{
+                bat "mvn test -Dcucumber.options=\"--tags @post,@put\""
+            }
+        }
+        stage('Reports'){
+            steps{
+                //add reporting steps here
+            }
         }
         stage('Deploy'){
-          steps{
-      echo 'Deploying'
-                }
+            echo 'Deploying'
         }
-}
+    }
 }

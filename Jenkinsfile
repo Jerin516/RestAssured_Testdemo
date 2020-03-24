@@ -1,14 +1,33 @@
 pipeline {
     agent any
-    stages {
-
-        stage('testing pipeline'){
-          steps{
-		    echo 'test1'
-                sh 'mkdir from-jenkins'
-                sh 'touch from-jenkins/test.txt'
-                }
+    
+    tools{
+        maven "MAVEN_HOME"
+    }
+    
+    stages{
+        stage('Build'){
+            steps{
+                bat "mvn clean compile"
+            }
         }
-
-}
+        stage('RunGetTag'){
+            steps{
+                bat "mvn test -Dcucumber.options=\"--tags @get\""
+            }
+        }
+        stage('RunPostPutTag'){
+            steps{
+                bat "mvn test -Dcucumber.options=\"--tags @post,@put\""
+            }
+        }
+        stage('Reports'){
+            steps{
+                //add reporting steps here
+            }
+        }
+        stage('Deploy'){
+            echo 'Deploying'
+        }
+    }
 }

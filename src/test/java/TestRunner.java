@@ -16,12 +16,16 @@ import java.io.File;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(format = { "pretty" }, features = "src//test//java//Features", glue = {
-		"Steps" }, tags = { "@get" }, plugin = {
+		"Steps" }, plugin = {
 				"com.cucumber.listener.ExtentCucumberFormatter:src/test/reports/cucumber_report.html",
 				"html:output/html-report" }, monochrome = true)
 public class TestRunner extends ReUsableMethods {
 	
-	
+	@BeforeClass
+	public static void setProperty()
+	{
+		System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "default-src 'self'; script-src '*'; connect-src '*'; img-src '*'; style-src '*';");
+	}
 	
 	@AfterClass
 	public static void writeExtentReport() {

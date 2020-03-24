@@ -12,7 +12,7 @@ Feature: GET: Automated Demo Tests
 
 
    #Posting the URL , POST and PUT the Place Name of the Google Map API Request
-  @get 
+  @post 
   Scenario Outline: Posting New details in Google Map API and updating the Address and verifying new changed address
    Given User set the Query Parameters for the service API
     When User perform POST operation with a new set of address details
@@ -24,7 +24,7 @@ Feature: GET: Automated Demo Tests
 
        #Updating the URL with the Place Name of the Google Map API Request
   
-  @get
+  @put
   Scenario Outline:  Updating by changing the address details in Google Map API and verifying new changed address
     Given User set the Query Parameters for the service API
     And User perform update of address in the existing data with new Address as "<NewAddressDetails>" with Status Message as "<StatusMessage>"

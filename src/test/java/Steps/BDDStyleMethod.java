@@ -23,9 +23,10 @@ public class BDDStyleMethod {
 
 
     public static void setQueryParameters() throws IOException {
-    	if(RestAssured.baseURI!=null && !RestAssured.baseURI.isEmpty())
+    	if(System.getenv("baseURI")!=null && !System.getenv("baseURI").isEmpty())
     	{
-    		baseURI=RestAssured.baseURI;
+    		
+    		RestAssured.baseURI=System.getenv("baseURI");
     	}
     	else
     		
@@ -33,7 +34,7 @@ public class BDDStyleMethod {
     		 RestAssured.baseURI= ReUsableMethods.loadPropertiesFile("baseURI");
     	}
     	
-    
+    ReUsableMethods.setPropertiesFile("baseURI", RestAssured.baseURI);
     	
         keyVal = ReUsableMethods.loadPropertiesFile("key");
         Log.info("The Query Parameters are set" + ":"  + RestAssured.baseURI +keyVal );

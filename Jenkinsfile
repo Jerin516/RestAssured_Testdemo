@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Reports'){
             steps{
-                //add reporting steps here
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'C:\\Users\\jerjose\\Documents\\Jenkins\\workspace\\RestAssured_Testdemo\\src\\test\\reports', reportFiles: 'cucumber_report.html', reportName: 'Extent Reports', reportTitles: ''])
             }
         }
         stage('Deploy'){

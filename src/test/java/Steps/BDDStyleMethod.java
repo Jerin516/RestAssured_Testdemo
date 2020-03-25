@@ -57,7 +57,7 @@ public class BDDStyleMethod {
 
     public static void postData() throws IOException {
         map.put("AddPlace", RestUtils.AddPlace());
-        RestAssured.baseURI= ReUsableMethods.loadPropertiesFile("baseURI");
+       // RestAssured.baseURI= ReUsableMethods.loadPropertiesFile("baseURI");
         String response =    given().log().all().queryParam("key", keyVal).header("Content-Type","application/json")
                 .body(RestUtils.AddPlace())
                 .when().post(ReUsableMethods.loadPropertiesFile("basePath"))

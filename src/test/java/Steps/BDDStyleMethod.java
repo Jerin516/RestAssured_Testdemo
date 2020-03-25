@@ -18,11 +18,23 @@ public class BDDStyleMethod {
     public static HashMap map = new HashMap();
     public static  String  placeId;
     public static String  keyVal;
+    public static String baseURI;
 
 
 
     public static void setQueryParameters() throws IOException {
-        RestAssured.baseURI= ReUsableMethods.loadPropertiesFile("baseURI");
+    	if(RestAssured.baseURI!=null && !RestAssured.baseURI.isEmpty())
+    	{
+    		baseURI=RestAssured.baseURI;
+    	}
+    	else
+    		
+    	{
+    		 RestAssured.baseURI= ReUsableMethods.loadPropertiesFile("baseURI");
+    	}
+    	
+    
+    	
         keyVal = ReUsableMethods.loadPropertiesFile("key");
         Log.info("The Query Parameters are set" + ":"  + RestAssured.baseURI +keyVal );
     }

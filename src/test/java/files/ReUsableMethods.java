@@ -16,17 +16,21 @@ public ExtentReports extent;
 public static ExtentTest scenarioDef;
 public static ExtentTest features;
 public static  String reportLocation = "C:/Users/jerjose/Documents/RestAssured_Demo/";
-	
+static InputStream inputStream;
+static String propFileName = "config.properties";
+
+
 	public static JsonPath rawToJson(String response)
 	{
 		JsonPath js1 =new JsonPath(response);
 		return js1;
 	}
 
+	
 	public static String loadPropertiesFile(String attributeName) throws IOException {
-		InputStream inputStream;
+		
 		Properties prop = new Properties();
-		String propFileName = "config.properties";
+		
 
 		inputStream = ReUsableMethods.class.getClassLoader().getResourceAsStream(propFileName);
 
@@ -36,6 +40,14 @@ public static  String reportLocation = "C:/Users/jerjose/Documents/RestAssured_D
 			throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
 		}
 		String val = prop.getProperty(attributeName);
-return val;
+		return val;
+	}
+	
+	
+	
+	public static void setPropertiesFile(String attributeName, String val) throws IOException {
+	
+		Properties prop = new Properties();		
+		prop.setProperty(attributeName, val);
 	}
 }

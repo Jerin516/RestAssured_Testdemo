@@ -14,6 +14,11 @@ import java.util.Map;
 public class RestAssuredExtention {
 
     public static RequestSpecification Request;
+    public static String server = "smtp.gmail.com";
+    public static String from = "jerrin.jose516@gmail.com";
+    public static String password = "Jerin@jerry1991";	
+    public static String[] to= {"jerrin.jose516@gmail.com"};
+    public static String Subject = "Extent Project Report ";
 
     public RestAssuredExtention()
     {
@@ -40,4 +45,6 @@ public class RestAssuredExtention {
         return null;
     }
 
+    
+    
 }
